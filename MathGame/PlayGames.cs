@@ -1,13 +1,11 @@
 ﻿using System;
+using MathGame.Models;
+
 namespace MathGame
 {
 	public class PlayGames
 	{
-		public PlayGames()
-		{
-		}
-
-        internal static string AdditionGame()
+        internal static Game AdditionGame()
         {
             var random = new Random();
             int firstNumber;
@@ -22,7 +20,7 @@ namespace MathGame
                 Console.Clear();
 
                 Console.WriteLine($"{firstNumber} + {secondNumber} = ?");
-                var result = Console.ReadLine();
+                var result = GameUtilities.ValidateResult(Console.ReadLine());
 
                 if (int.Parse(result) == firstNumber + secondNumber)
                 {
@@ -38,10 +36,15 @@ namespace MathGame
             Console.WriteLine($"Good game! You got {score}/10 problems correct!\n" +
                 $"Press any key to return to the main menu!");
             Console.ReadLine();
-            return $"{DateTime.Now} – Addition: Score = {score}";
+            return new Game
+            {
+                Date = DateTime.Now,
+                Score = score,
+                Type = "Addition"
+            };
         }
 
-        internal static string SubtractionGame()
+        internal static Game SubtractionGame()
         {
             var random = new Random();
             int firstNumber;
@@ -55,7 +58,7 @@ namespace MathGame
                 secondNumber = random.Next(1, 9);
 
                 Console.WriteLine($"{firstNumber} - {secondNumber} = ?");
-                var result = Console.ReadLine();
+                var result = GameUtilities.ValidateResult(Console.ReadLine());
 
                 if (int.Parse(result) == firstNumber - secondNumber)
                 {
@@ -70,10 +73,15 @@ namespace MathGame
             }
             Console.WriteLine($"Good game! You got {score}/10 problems correct!\n");
             Console.ReadLine();
-            return $"{DateTime.Now} – Subtraction: Score = {score}";
+            return new Game
+            {
+                Date = DateTime.Now,
+                Score = score,
+                Type = "Subtraction"
+            };
         }
 
-        internal static string MultiplicationGame()
+        internal static Game MultiplicationGame()
         {
             var random = new Random();
             int firstNumber;
@@ -87,7 +95,7 @@ namespace MathGame
                 secondNumber = random.Next(1, 9);
 
                 Console.WriteLine($"{firstNumber} * {secondNumber} = ?");
-                var result = Console.ReadLine();
+                var result = GameUtilities.ValidateResult(Console.ReadLine());
 
                 if (int.Parse(result) == firstNumber * secondNumber)
                 {
@@ -102,10 +110,15 @@ namespace MathGame
             }
             Console.WriteLine($"Good game! You got {score}/10 problems correct!\n");
             Console.ReadLine();
-            return $"{DateTime.Now} – Multiplication: Score = {score}";
+            return new Game
+            {
+                Date = DateTime.Now,
+                Score = score,
+                Type = "Multiplication"
+            };
         }
 
-        internal static string DivisionGame()
+        internal static Game DivisionGame()
         {
             var random = new Random();
             int firstNumber;
@@ -120,7 +133,7 @@ namespace MathGame
                 secondNumber = numbers[1];
 
                 Console.WriteLine($"{firstNumber} / {secondNumber} = ?");
-                var result = Console.ReadLine();
+                var result = GameUtilities.ValidateResult(Console.ReadLine());
 
                 if (int.Parse(result) == firstNumber / secondNumber)
                 {
@@ -135,7 +148,12 @@ namespace MathGame
             }
             Console.WriteLine($"Good game! You got {score}/10 problems correct!\n");
             Console.ReadLine();
-            return $"{DateTime.Now} – Division: Score = {score}";
+            return new Game
+            {
+                Date = DateTime.Now,
+                Score = score,
+                Type = "Division"
+            };
         }
 
         public static int[] GetDivisionNumbers()

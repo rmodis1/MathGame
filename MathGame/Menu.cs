@@ -26,7 +26,7 @@ namespace MathGame
                             "M – Multiplication\n" +
                             "D – Division\n" +
                             "Q – Quit for now\n" +
-                            "S – View scores" +
+                            "V – View scores\n" +
                             "_________________________");
         }
     }

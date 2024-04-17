@@ -1,11 +1,13 @@
-﻿namespace MathGame;
+﻿using MathGame.Models;
+
+namespace MathGame;
 
 class Program
 {
     public static void Main(string[] args)
     {
         Menus.OpeningMenu();
-        List<string> games = new List<string>();
+        List<Game> games = new ();
 
         string areaSelected = GameUtilities.GetUserInput();
 
@@ -16,24 +18,24 @@ class Program
                 GameUtilities.OpenGame(areaSelected);
                 games.Add(PlayGames.AdditionGame());
             }
-            if (areaSelected == "S")
+            else if (areaSelected == "S")
             {
                 GameUtilities.OpenGame(areaSelected);
                 games.Add(PlayGames.SubtractionGame());
             }
-            if (areaSelected == "M")
+            else if (areaSelected == "M")
             {
                 GameUtilities.OpenGame(areaSelected);
                 games.Add(PlayGames.MultiplicationGame());
             }
-            if (areaSelected == "D")
+            else if (areaSelected == "D")
             {
                 GameUtilities.OpenGame(areaSelected);
                 games.Add(PlayGames.DivisionGame());
             }
-            if (areaSelected == "S")
+            else if (areaSelected == "V")
             {
-                GameUtilities.ViewGames(games);
+                GameUtilities.PrintGames(games);
             }
             else
             {
